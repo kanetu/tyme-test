@@ -24,7 +24,7 @@ const UserInfoForm: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       {t("global.welcome")}
       <div>
-        <label>Name</label>
+        <label className=" flex bg-red-50">Name</label>
         <Controller
           name="name"
           control={control}
