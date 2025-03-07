@@ -72,11 +72,12 @@ module.exports = {
       tty: false,
     },
     alias: {
-      "@components": path.resolve(__dirname, "../src/components"),
-      "@features": path.resolve(__dirname, "../src/features"),
-      "@assets": path.resolve(__dirname, "../src/assets"),
-      "@test-utils": path.resolve(__dirname, "../src/test-utils"),
-      "@translations": path.resolve(__dirname, "../src/translations"),
+      "@/*": path.resolve(__dirname, "../src/*"),
+      // "@/components": path.resolve(__dirname, "../src/components"),
+      // "@/features": path.resolve(__dirname, "../src/features"),
+      // "@/assets": path.resolve(__dirname, "../src/assets"),
+      // "@/test-utils": path.resolve(__dirname, "../src/test-utils"),
+      // "@/translations": path.resolve(__dirname, "../src/translations"),
     },
   },
 };

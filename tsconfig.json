@@ -18,14 +18,14 @@
     "noImplicitReturns": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@features/*": ["src/features/*"],
-      "@translations/*": ["src/translations/*"],
-      "@test-utils": ["src/test-utils"]
+      "@/*": ["./src/*"]
+      // "@components/*": ["src/components/*"],
+      // "@assets/*": ["src/assets/*"],
+      // "@features/*": ["src/features/*"],
+      // "@translations/*": ["src/translations/*"],
+      // "@test-utils": ["src/test-utils"]
     }
   },
   "include": ["src", "types", "settings"]
