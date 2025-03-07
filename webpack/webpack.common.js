@@ -13,9 +13,9 @@ module.exports = {
   output: {
     publicPath: "/",
     path: path.resolve("dist"),
-    filename: "[name].[fullhash].bundle.js",
-    chunkFilename: "[name].[fullhash].bundle.js",
-    assetModuleFilename: "assets/[fullhash][ext][query]",
+    filename: "[name].[hash].bundle.js",
+    chunkFilename: "[name].[hash].bundle.js",
+    assetModuleFilename: "assets/[hash][ext][query]",
   },
   module: {
     rules: [

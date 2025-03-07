@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Home from "@/features/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
@@ -11,8 +12,9 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main bg-red-50">
+        TEST
         <BrowserRouter>
-          {/* <Header /> */}
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
