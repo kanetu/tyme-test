@@ -1,4 +1,6 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SubHeader from "@/components/SubHeader";
 import Home from "@/features/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
@@ -12,13 +14,13 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main bg-red-50">
-        TEST
         <BrowserRouter>
           <Header />
+          <SubHeader />
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </BrowserRouter>
       </div>
     </QueryClientProvider>

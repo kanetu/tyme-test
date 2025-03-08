@@ -8,16 +8,15 @@
 
 @font-face {
   font-family: "Drone Ranger Pro Bold";
-  src: url("../../public/fonts/dronerangerpro_black.otf") format("truetype");
-  font-weight: bold;
-  font-style: bold;
+  src: url("../../public/fonts/dronerangerpro_bold.otf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Drone Ranger Pro Black";
   src: url("../../public/fonts/dronerangerpro_black.otf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {

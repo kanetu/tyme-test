@@ -45,7 +45,7 @@ module.exports = {
         loader: "json-loader",
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|jfif)$/i,
         type: "asset/resource",
       },
       {
