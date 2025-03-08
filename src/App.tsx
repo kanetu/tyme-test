@@ -11,20 +11,20 @@ import "./styles/globals.css";
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <div className="main bg-red-50">
-        <BrowserRouter>
-          <Header />
-          <SubHeader />
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <div className="main bg-red-50">
+                <BrowserRouter>
+                    <Header />
+                    <SubHeader />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                    </Routes>
+                    <Footer />
+                </BrowserRouter>
+            </div>
+        </QueryClientProvider>
+    );
 };
 
 export default App;
