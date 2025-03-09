@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 const App: React.FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
-            <div className="main bg-red-50">
+            <div className="main bg-[url(../../public/images/background.png)] h-max bg-cover bg-center bg-no-repeat  w-full">
                 <BrowserRouter>
                     <Header />
                     <SubHeader />

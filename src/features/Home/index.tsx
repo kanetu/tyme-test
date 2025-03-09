@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import UserInfoForm from "./components/UserInfoForm";
 import CharacterCard from "@/components/CharacterCard";
+import LeftPanel from "./components/LeftPanel";
+import RightPanel from "./components/RightPanel";
 
 const Home = () => {
     const useUsersQuery = useQuery({
@@ -22,15 +23,9 @@ const Home = () => {
     console.log(`----${JSON.stringify(data)}`);
 
     return (
-        <div>
-            <CharacterCard
-                price="2.75"
-                authorName="Ghozali_Ghozalu"
-                type="Epic"
-                cardTitle="The DJ"
-                cardImageUrl={"/images/assassin-person.png"}
-                authorAvatar="/images/the-dj-person.png"
-            />
+        <div className="my-[5%] mx-[5%] flex flex-col lg:flex-row">
+            <LeftPanel />
+            <RightPanel />
         </div>
     );
 };
