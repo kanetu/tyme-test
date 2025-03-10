@@ -6,7 +6,8 @@ import { UseFormWatch } from "react-hook-form";
 export const useProductQuery = (
     showItems: number,
     setTotalItems: React.Dispatch<React.SetStateAction<number>>,
-    watch: UseFormWatch<FilterFormValues>
+    watch: UseFormWatch<FilterFormValues>,
+    selectedCategory: string
 ) => {
     const debouncedSearchTerm = useDebounce(watch("search"), 200);
     const queryKey = [
@@ -20,11 +21,14 @@ export const useProductQuery = (
             time: watch("time"),
         },
         showItems,
+        selectedCategory,
+
     ];
 
     const buildFilterParams = (
         { tier, theme, time, price, priceRange, search }: FilterFormValues,
-        showItems: number
+        showItems: number,
+        selectedCategory: string
     ) => {
         let sortString = ",";
         sortString += time === "Latest" ? "-createdAt," : "createdAt,";
@@ -32,6 +36,7 @@ export const useProductQuery = (
         return new URLSearchParams({
             ...(tier === "All" ? {} : { tier: tier }),
             ...(search ? { title_like: search } : {}),
+            ...(selectedCategory === "All" ? {} : { category: selectedCategory }),
             _sort: sortString,
             theme: theme,
             price_gte: priceRange[0].toString(),
@@ -52,10 +57,11 @@ export const useProductQuery = (
     >({
         queryKey: queryKey,
         queryFn: async ({ queryKey }) => {
-            const [_, filterCriterias, showItems] = queryKey;
+            const [_, filterCriterias, showItems, selectedCategory] = queryKey;
             const queryParams = buildFilterParams(
                 filterCriterias as FilterFormValues,
-                showItems as number
+                showItems as number,
+                selectedCategory as string
             ).toString();
 
             // Add timeout to increase UX

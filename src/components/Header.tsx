@@ -8,8 +8,8 @@ type HeaderProps = {};
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     return (
         <div className="bg-[#17161A]/[.7] h-[84px] w-full flex justify-center items-center">
-            <header className="max-w-[1920px]  text-white z-100 px-[12%] w-full h-[84px] flex justify-between items-center text-[14px]">
-                <div className="flex items-center justify-between 2xl:basis-4/6">
+            <header className="w-full md:w-[900px] xl:w-[1100px] 2xl:w-[1920px] 2xl:px-[250px] text-white z-100  h-[84px] flex justify-between items-center text-[14px]">
+                <div className="flex items-center justify-between sm:hidden md:basis-3/6 xl:basis-4/6 2xl:basis-4/6">
                     <Link to="/Home">Home</Link>
                     <Link to="/Home">About Us</Link>
                     <Link to="/Home">Our Teams</Link>

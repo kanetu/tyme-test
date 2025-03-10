@@ -10,6 +10,7 @@ import {
     FormMessage,
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
+import { ScrollArea } from "@/components/ui/ScrollArea";
 import {
     Select,
     SelectContent,
@@ -20,11 +21,13 @@ import {
 import { SkeletonCard } from "@/components/ui/Skeleton";
 import { Slider } from "@/components/ui/Slider";
 import {
+    categoryOptions,
     priceOptions,
     themeOptions,
     tierOptions,
     timeOptions,
 } from "@/consts/main";
+import { cn } from "@/lib/utils";
 import { useProductQuery } from "@/queries";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -52,6 +55,7 @@ const defaultValues = {
 const LeftPanel: React.FC<LeftPanelProps> = (props: LeftPanelProps) => {
     const [showItems, setShowItems] = useState(20);
     const [totalItems, setTotalItems] = useState(100);
+    const [selectedCategory, setSelectedCategory] = useState("All");
     const form = useForm<FilterFormValues>({
         defaultValues,
         mode: "onChange",
@@ -67,7 +71,12 @@ const LeftPanel: React.FC<LeftPanelProps> = (props: LeftPanelProps) => {
         setShowItems((pre) => pre + 20);
     };
 
-    const productQuery = useProductQuery(showItems, setTotalItems, watch);
+    const productQuery = useProductQuery(
+        showItems,
+        setTotalItems,
+        watch,
+        selectedCategory
+    );
     const { data, isLoading, refetch } = productQuery;
 
     const onSubmit = () => {
@@ -75,7 +84,7 @@ const LeftPanel: React.FC<LeftPanelProps> = (props: LeftPanelProps) => {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col md:flex-col lg:flex-row">
             <div className="text-white font-[Inter] md:w-full lg:w-[380px] mg">
                 <Form {...form}>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -326,13 +335,29 @@ const LeftPanel: React.FC<LeftPanelProps> = (props: LeftPanelProps) => {
                 </Form>
             </div>
             <div>
-                <div className="lg:mx-[40px] grid md:grid-cols-3 md:mt-[20px] lg:grid-cols-4 gap-[40px]">
-                    {isLoading &&
-                        Array.from({ length: 20 }, (_, index) => (
-                            <SkeletonCard key={index} />
-                        ))}
-                    {React.Children.toArray(
-                        (data || []).map(
+                <div className="px-[56px]">
+                    {categoryOptions.map((op) => (
+                        <Button
+                            key={op.id}
+                            onClick={() => {
+                                setSelectedCategory(op.value);
+                            }}
+                            className={cn(
+                                "lg:basis-[170px] lg:mb-[10px] mr-[24px] bg-linear-to-r mt-3 lg:mt-0 [&.active]:from-[#DA458F] [&.active]:to-[#DA34DD] from-[#DA458F]/30 to-[#DA34DD]/30  lg:px-[16px] font-[Inter] text-[16px] font-semibold rounded-[4px]",
+                                selectedCategory === op.value && "active"
+                            )}
+                        >
+                            {op.text}
+                        </Button>
+                    ))}
+                </div>
+                <ScrollArea className="max-h-[2000px] h-[1000px] md:mx-[40px] xl:mx-[40px] 2xl:mx-[40px] md:mt-[20px] w-full p-4">
+                    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[40px]">
+                        {isLoading &&
+                            Array.from({ length: 20 }, (_, index) => (
+                                <SkeletonCard key={index} />
+                            ))}
+                        {(data || []).map(
                             ({ id, author, title, category, price }) => (
                                 <CharacterCard
                                     key={id}
@@ -344,9 +369,10 @@ const LeftPanel: React.FC<LeftPanelProps> = (props: LeftPanelProps) => {
                                     authorAvatar={author.avatar}
                                 />
                             )
-                        )
-                    )}
-                </div>
+                        )}
+                    </div>
+                </ScrollArea>
+
                 {(data || [])?.length < totalItems && (
                     <div className="flex mt-[55px] items-center justify-center w-full">
                         <Button
