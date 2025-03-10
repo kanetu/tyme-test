@@ -7,13 +7,13 @@ const SubHeader: React.FC<SubHeaderProps> = (props: SubHeaderProps) => {
     return (
         <div className="w-full flex justify-center">
             <div className="relative w-[1920px] lg:w-[1920px]">
-                <div className="bg-[url(../../public/images/head-bg.jpeg)] bg-cover bg-center bg-no-repeat h-[1100px] md:h-[900px] xl:h-[1100px] 2xl:h-[810px] w-full relative "></div>
+                <div className="bg-[url(../../public/images/head-bg.jpeg)] bg-cover bg-center bg-no-repeat h-[1000px] md:h-[900px] xl:h-[1100px] 2xl:h-[810px] w-full relative "></div>
                 <img
                     src="/images/frame-orange.png"
                     alt="frame-orange"
                     className="h-[500px] md:h-[400px] xl:h-[300px] 2xl:h-[300px] w-full absolute bottom-0"
                 />
-                <div className="md:px-[100px] md:py-[100px] xl:px-[178px] xl:py-[148px] top-0 absolute w-full">
+                <div className="px-[10px] py-[100px] md:px-[100px] md:py-[100px] xl:px-[178px] xl:py-[148px] top-0 absolute w-full">
                     <img
                         src="/images/new-arrival.png"
                         alt="new-arrival"
