@@ -1,20 +1,19 @@
 import { Button } from "@/components/ui/Button";
-import { Product } from "@/types/product";
 
 type ViewMoreProps = {
-    data?: Product[];
+    loadedItems: number;
     totalItems: number;
     increaseItems: () => void;
 };
 
 const ViewMore: React.FC<ViewMoreProps> = ({
-    data,
+    loadedItems,
     totalItems,
     increaseItems,
 }: ViewMoreProps) => {
     return (
         <>
-            {(data || [])?.length < totalItems && (
+            {loadedItems < totalItems && (
                 <div className="flex mt-[55px] items-center justify-center w-full">
                     <Button
                         onClick={increaseItems}

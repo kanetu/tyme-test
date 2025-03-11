@@ -24,6 +24,7 @@ module.exports = {
     "^@/assets(.*)$": "<rootDir>/src/assets$1",
     "^@/test-utils(.*)$": "<rootDir>/src/test-utils$1",
     "^@/lib/utils(.*)$": "<rootDir>/src/lib/utils$1",
+    "^@/consts/common(.*)$": "<rootDir>/src/consts/common$1",
   },
 
   // Ignore files or directories that should not be tested

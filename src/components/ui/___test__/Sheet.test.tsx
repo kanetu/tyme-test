@@ -65,7 +65,6 @@ describe("<Sheet />", () => {
         expect(sheetCloseBtn).toHaveTextContent("Sheet close");
 
         fireEvent.click(sheetCloseBtn);
-        // const sheetContent = await findByText("Sheet content");
         expect(sheetTitle).not.toBeInTheDocument();
         expect(sheetContent).not.toBeInTheDocument();
         expect(sheetDescription).not.toBeInTheDocument();

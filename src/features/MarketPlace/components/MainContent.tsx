@@ -1,14 +1,14 @@
+import { lazy, Suspense } from "react";
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import { Skeleton, SkeletonCard } from "@/components/ui/Skeleton";
 import { Product } from "@/types/product";
-import { lazy, Suspense } from "react";
+
+const CharacterCard = lazy(() => import("@/components/CharacterCard"));
 
 type MainContentProps = {
     isLoading: boolean;
     data?: Product[];
 };
-
-const CharacterCard = lazy(() => import("@/components/CharacterCard"));
 
 const MainContent: React.FC<MainContentProps> = ({
     isLoading,
@@ -22,9 +22,8 @@ const MainContent: React.FC<MainContentProps> = ({
                         <SkeletonCard key={index} />
                     ))}
                 {(data || []).map(({ id, author, title, category, price }) => (
-                    <Suspense fallback={<Skeleton />}>
+                    <Suspense fallback={<Skeleton />} key={id}>
                         <CharacterCard
-                            key={id}
                             price={price}
                             authorName={`${author.firstName} ${author.lastName}`}
                             category={category}

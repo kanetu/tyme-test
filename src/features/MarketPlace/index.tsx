@@ -76,7 +76,7 @@ const MarketPlace = () => {
 
                     <Suspense fallback={<Skeleton />}>
                         <ViewMore
-                            data={data}
+                            loadedItems={data?.length || 0}
                             increaseItems={increaseItems}
                             totalItems={totalItems}
                         />
