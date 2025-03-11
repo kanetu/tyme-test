@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SubHeader from "@/components/SubHeader";
-import Home from "@/features/Home";
+import MarketPlace from "@/features/MarketPlace";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -18,7 +18,7 @@ const App: React.FC = () => {
                     <Header />
                     <SubHeader />
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<MarketPlace />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
