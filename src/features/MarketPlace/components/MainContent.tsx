@@ -1,19 +1,11 @@
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import { Skeleton, SkeletonCard } from "@/components/ui/Skeleton";
+import { Product } from "@/types/product";
 import { lazy, Suspense } from "react";
 
 type MainContentProps = {
     isLoading: boolean;
-    data:
-        | {
-              id: number;
-              author: any;
-              title: string;
-              category: string;
-              price: string;
-              cardImageUrl: string;
-          }[]
-        | undefined;
+    data?: Product[];
 };
 
 const CharacterCard = lazy(() => import("@/components/CharacterCard"));

@@ -1,16 +1,8 @@
 import { Button } from "@/components/ui/Button";
+import { Product } from "@/types/product";
 
 type ViewMoreProps = {
-    data:
-        | {
-              id: number;
-              author: any;
-              title: string;
-              category: string;
-              price: string;
-              cardImageUrl: string;
-          }[]
-        | undefined;
+    data?: Product[];
     totalItems: number;
     increaseItems: () => void;
 };

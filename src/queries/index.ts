@@ -1,5 +1,6 @@
-import { FilterFormValues } from "@/features/Home/components/LeftPanel";
-import { useQuery } from "@tanstack/react-query";
+import { FilterFormValues } from "@/features/MarketPlace/components/FilterForm";
+import { Product } from "@/types/product";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@uidotdev/usehooks";
 import { UseFormWatch } from "react-hook-form";
 
@@ -9,7 +10,9 @@ export const useProductQuery = (
     watch: UseFormWatch<FilterFormValues>,
     selectedCategory: string
 ) => {
-    const debouncedSearchTerm = useDebounce(watch("search"), 200);
+    const debounceTime = 200;
+    const staleTime = 60000; // 60s
+    const debouncedSearchTerm = useDebounce(watch("search"), debounceTime);
     const queryKey = [
         "products",
         {
@@ -45,41 +48,36 @@ export const useProductQuery = (
             _end: showItems.toString(),
         });
     };
-    return useQuery<
-        {
-            id: number;
-            author: any;
-            title: string;
-            category: string;
-            price: string;
-            cardImageUrl: string;
-        }[]
-    >({
-        queryKey: queryKey,
-        queryFn: async ({ queryKey }) => {
-            const [_, filterCriterias, showItems, selectedCategory] = queryKey;
-            const queryParams = buildFilterParams(
-                filterCriterias as FilterFormValues,
-                showItems as number,
-                selectedCategory as string
-            ).toString();
 
-            // Add timeout to increase UX
-            const res = await new Promise((resolve) =>
-                setTimeout(resolve, 1000)
-            ).then(async () => {
-                let url = `http://localhost:5005/products?${queryParams}`;
-                const response = await fetch(url, {
-                    method: "GET",
-                });
-                return await response;
+    const queryFn = async ({ queryKey }: QueryFunctionContext) => {
+        const [_, filterCriterias, showItems, selectedCategory] = queryKey;
+        const queryParams = buildFilterParams(
+            filterCriterias as FilterFormValues,
+            showItems as number,
+            selectedCategory as string
+        ).toString();
+
+        // Add timeout to increase UX
+        const res = await new Promise((resolve) =>
+            setTimeout(resolve, 1000)
+        ).then(async () => {
+            let url = `http://localhost:5005/products?${queryParams}`;
+            const response = await fetch(url, {
+                method: "GET",
             });
-            const totalCount = res.headers.get("X-Total-Count");
-            if (totalCount) {
-                setTotalItems(Number(totalCount));
-            }
-            return res.json();
-        },
-        staleTime: 60000,
+            return await response;
+        });
+        const totalCount = res.headers.get("X-Total-Count");
+        if (totalCount) {
+            setTotalItems(Number(totalCount));
+        }
+        return res.json();
+    }
+    return useQuery<
+        Product[]
+    >({
+        queryKey,
+        queryFn,
+        staleTime,
     });
 };
