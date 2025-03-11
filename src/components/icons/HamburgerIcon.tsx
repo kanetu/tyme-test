@@ -16,7 +16,7 @@ const HamburgerIcon: React.FC<HamburgerIconProps> = (
         >
             <g
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 stroke="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"

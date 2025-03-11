@@ -22,7 +22,7 @@ import {
     themeOptions,
     tierOptions,
     timeOptions,
-} from "@/consts/main";
+} from "@/consts/common";
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
 

@@ -19,10 +19,11 @@ module.exports = {
   transformIgnorePatterns: ["<rootDir>/node_modules/"],
 
   moduleNameMapper: {
-    "^@components(.*)$": "<rootDir>/src/components$1",
-    "^@features(.*)$": "<rootDir>/src/features$1",
-    "^@assets(.*)$": "<rootDir>/src/assets$1",
-    "^@test-utils(.*)$": "<rootDir>/src/test-utils$1",
+    "^@/components(.*)$": "<rootDir>/src/components$1",
+    "^@/features(.*)$": "<rootDir>/src/features$1",
+    "^@/assets(.*)$": "<rootDir>/src/assets$1",
+    "^@/test-utils(.*)$": "<rootDir>/src/test-utils$1",
+    "^@/lib/utils(.*)$": "<rootDir>/src/lib/utils$1",
   },
 
   // Ignore files or directories that should not be tested
@@ -33,6 +34,12 @@ module.exports = {
 
   // Report test results in a more verbose format
   verbose: true,
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/index.tsx",
+    "!src/reportWebVitals.ts",
+  ],
 
   // Setup files that will be run before running tests
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],

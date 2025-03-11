@@ -30,7 +30,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
                 </div>
                 <img
                     src={cardImageUrl}
-                    alt="avatar"
+                    alt={cardImageUrl}
                     className="h-[197px] w-[235px] object-cover absolute bottom-0 left-0"
                 />
             </div>

@@ -3,7 +3,7 @@ import MainCharacter from "./MainCharacter";
 
 type SubHeaderProps = {};
 
-const SubHeader: React.FC<SubHeaderProps> = (props: SubHeaderProps) => {
+const SubHeader: React.FC<SubHeaderProps> = () => {
     return (
         <div className="w-full flex justify-center">
             <div className="relative w-[1920px] lg:w-[1920px]">

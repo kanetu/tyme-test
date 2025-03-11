@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { categoryOptions } from "@/consts/main";
+import { categoryOptions } from "@/consts/common";
 import { cn } from "@/lib/utils";
 
 type CategoryFilterProps = {

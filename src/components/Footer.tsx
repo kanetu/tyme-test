@@ -6,7 +6,7 @@ import { Input } from "./ui/Input";
 
 type FooterProps = {};
 
-const Footer: React.FC<FooterProps> = (props: FooterProps) => {
+const Footer: React.FC<FooterProps> = () => {
     return (
         <div className="w-full flex justify-center">
             <div className="md:w-full lg:w-[1920px] ">

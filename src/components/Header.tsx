@@ -7,7 +7,7 @@ import HamburgerIcon from "./icons/HamburgerIcon";
 
 type HeaderProps = {};
 
-const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
+const Header: React.FC<HeaderProps> = () => {
     return (
         <div className="bg-[#17161A]/[.7] h-[84px] w-full flex justify-center items-center">
             <header className="w-full md:w-[900px] xl:w-[1100px] 2xl:w-[1920px] 2xl:px-[250px] text-white z-10  h-[84px] flex justify-between items-center text-[14px]">
@@ -15,9 +15,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                     <Link to="/Home">Home</Link>
                     <Link to="/Home">About Us</Link>
                     <Link to="/Home">Our Teams</Link>
-                    <Link to="/Home">MarketPlace</Link>
-                    <Link to="/Home">RoadMap</Link>
-                    <Link to="/Home">WhitePaper</Link>
+                    <Link to="/Home">Marketplace</Link>
+                    <Link to="/Home">Roadmap</Link>
+                    <Link to="/Home">Whitepaper</Link>
                 </div>
                 <Sheet>
                     <SheetTrigger>
@@ -28,9 +28,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                             <Link to="/Home">Home</Link>
                             <Link to="/Home">About Us</Link>
                             <Link to="/Home">Our Teams</Link>
-                            <Link to="/Home">MarketPlace</Link>
-                            <Link to="/Home">RoadMap</Link>
-                            <Link to="/Home">WhitePaper</Link>
+                            <Link to="/Home">Marketplace</Link>
+                            <Link to="/Home">Roadmap</Link>
+                            <Link to="/Home">Whitepaper</Link>
                         </div>
                     </SheetContent>
                 </Sheet>
