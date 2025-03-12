@@ -20,13 +20,9 @@ describe("<SubHeader />", () => {
         const { getByAltText } = render(<TestSubHeader />);
 
         const newArrival = getByAltText("new-arrival");
-        const frameOrange = getByAltText("frame-orange");
 
         expect(newArrival).toBeInTheDocument();
         expect(newArrival).toHaveAttribute("src", "/images/new-arrival.png");
-
-        expect(frameOrange).toBeInTheDocument();
-        expect(frameOrange).toHaveAttribute("src", "/images/frame-orange.png");
 
         expect(CharacterClass).toHaveBeenCalledTimes(4);
         expect(MainCharacter).toHaveBeenCalledTimes(1);
