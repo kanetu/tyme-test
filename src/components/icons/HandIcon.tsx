@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 type HandIconProps = {} & JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>;
 

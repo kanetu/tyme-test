@@ -1,4 +1,10 @@
 import { Skeleton } from "@/components/ui/Skeleton";
+import {
+    priceOptions,
+    themeOptions,
+    tierOptions,
+    timeOptions,
+} from "@/consts/common";
 import { useProductQuery } from "@/queries";
 import { lazy, Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -23,10 +29,10 @@ const MarketPlace = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const defaultValues = {
         search: "",
-        tier: "Premium",
-        theme: "Halloween",
-        price: "lowToHigh",
-        time: "Latest",
+        tier: tierOptions[1].value,
+        theme: themeOptions[1].value,
+        price: priceOptions[0].value,
+        time: timeOptions[0].value,
         priceRange: [10, 100],
     };
 
